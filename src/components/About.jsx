@@ -1,45 +1,32 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { GraduationCap, Mail, MapPin } from 'lucide-react';
+import { MapPin, GraduationCap } from 'lucide-react';
 
 const About = () => {
   return (
     <section id="about" className="relative bg-black text-white py-20">
-      <div className="mx-auto max-w-5xl px-6 grid md:grid-cols-2 gap-10 items-start">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="space-y-4"
-        >
-          <h2 className="text-2xl sm:text-3xl font-bold">About Me</h2>
-          <p className="text-white/75 leading-relaxed">
-            I’m a data scientist focused on building robust, human‑centered AI systems. I enjoy
-            exploring datasets, prototyping solutions quickly, and delivering maintainable pipelines
-            that scale. Currently pursuing an MS in Data Science.
-          </p>
-          <ul className="space-y-2 text-sm text-white/70">
-            <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Open to remote & hybrid roles</li>
-            <li className="flex items-center gap-2"><GraduationCap className="h-4 w-4" /> MS Data Science (in progress)</li>
-            <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> Contact: your.email@example.com</li>
-          </ul>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur"
-        >
-          <h3 className="font-semibold">What I’m exploring now</h3>
-          <ul className="mt-3 list-disc pl-5 text-sm text-white/70 space-y-1">
-            <li>Productionizing LLM features with retrieval and evaluation loops</li>
-            <li>Feature stores and experiment tracking at scale</li>
-            <li>Modern data apps with streaming analytics</li>
-          </ul>
-        </motion.div>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-8">About</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="space-y-4">
+            <p className="text-white/80">
+              I’m a data scientist focused on building production-ready ML systems and compelling data stories.
+              My work bridges analytics, engineering, and user-centered delivery.
+            </p>
+            <ul className="space-y-2 text-white/80">
+              <li className="flex items-center gap-2"><MapPin className="w-4 h-4" /> Based wherever great problems are.</li>
+              <li className="flex items-center gap-2"><GraduationCap className="w-4 h-4" /> Background in statistics and computer science.</li>
+            </ul>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+            <h3 className="font-semibold mb-3">Focus Areas</h3>
+            <ul className="list-disc list-inside text-white/80 space-y-1">
+              <li>Forecasting and experimentation</li>
+              <li>LLM-powered analytics and retrieval</li>
+              <li>Metric design and decision science</li>
+              <li>End-to-end product thinking</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );

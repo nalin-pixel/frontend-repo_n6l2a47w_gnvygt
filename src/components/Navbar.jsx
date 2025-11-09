@@ -1,31 +1,40 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Rocket, Github, Mail } from 'lucide-react';
 
 const Navbar = () => {
   return (
-    <div className="fixed top-4 left-1/2 z-50 -translate-x-1/2">
-      <motion.nav
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="flex items-center gap-1 rounded-full border border-white/10 bg-white/10 px-2 py-1 backdrop-blur supports-[backdrop-filter]:bg-white/10"
-      >
-        {[
-          { href: '#home', label: 'Home' },
-          { href: '#skills', label: 'Skills' },
-          { href: '#projects', label: 'Projects' },
-          { href: '#about', label: 'About' },
-        ].map((link) => (
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/30 bg-black/20 border-b border-white/10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="#home" className="flex items-center gap-2 group">
+          <div className="p-2 rounded-lg bg-gradient-to-tr from-violet-600 to-fuchsia-500 text-white">
+            <Rocket className="w-5 h-5" />
+          </div>
+          <span className="text-white/90 font-semibold tracking-wide group-hover:text-white transition-colors">Data Science Portfolio</span>
+        </a>
+        <nav className="hidden md:flex items-center gap-6 text-sm text-white/70">
+          <a href="#skills" className="hover:text-white transition-colors">Skills</a>
+          <a href="#projects" className="hover:text-white transition-colors">Projects</a>
+          <a href="#about" className="hover:text-white transition-colors">About</a>
+        </nav>
+        <div className="flex items-center gap-3">
           <a
-            key={link.href}
-            href={link.href}
-            className="rounded-full px-3 py-1.5 text-sm text-white/80 hover:text-white hover:bg-white/10 transition"
+            href="https://github.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="p-2 rounded-md hover:bg-white/10 text-white/80 hover:text-white transition"
+            aria-label="GitHub"
           >
-            {link.label}
+            <Github className="w-5 h-5" />
           </a>
-        ))}
-      </motion.nav>
-    </div>
+          <a
+            href="mailto:you@example.com"
+            className="px-3 py-2 rounded-md bg-white text-black text-sm font-medium hover:bg-white/90 transition"
+          >
+            <Mail className="inline w-4 h-4 mr-1" /> Contact
+          </a>
+        </div>
+      </div>
+    </header>
   );
 };
 

@@ -1,58 +1,48 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import Spline from '@splinetool/react-spline';
-import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative bg-black text-white min-h-[90vh] overflow-hidden">
-      {/* Interactive Spline scene */}
+    <section id="home" className="relative min-h-[90vh] w-full overflow-hidden bg-black text-white">
+      {/* Spline scene as the full-background canvas */}
       <div className="absolute inset-0">
         <Spline
-          scene="https://prod.spline.design/a6HhFsV3-DN9Z-yP/scene.splinecode"
+          scene="https://prod.spline.design/6v6z8wz3f3UQXyC6/scene.splinecode"
           style={{ width: '100%', height: '100%' }}
         />
       </div>
 
-      {/* Non-blocking gradient overlays for contrast */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/90" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black" />
+      {/* Subtle gradient overlays that don't block interaction */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80" />
+      <div className="pointer-events-none absolute -inset-x-24 top-0 h-56 bg-gradient-to-b from-fuchsia-500/10 to-transparent blur-3xl" />
 
-      <div className="relative mx-auto max-w-7xl px-6 pt-28 pb-24 sm:pt-36">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-40 pb-24">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight"
+        >
+          Data Science, done with craft.
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.6 }}
+          className="mt-4 max-w-2xl text-white/80"
+        >
+          I build reliable ML systems, insightful analytics, and delightful visualizations. Explore my skills and projects below.
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl"
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="mt-8 flex flex-wrap gap-3"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] tracking-wide text-white/80 backdrop-blur">
-            <span className="inline-block h-2 w-2 rounded-full bg-emerald-400" />
-            MS Data Science • AI • Analytics
-          </span>
-
-          <h1 className="mt-5 text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
-            Hi, I’m <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">a Data Scientist</span>
-          </h1>
-          <p className="mt-4 max-w-xl text-white/80">
-            I craft end‑to‑end data products — from wrangling and feature engineering to modeling,
-            MLOps, and elegant visualizations.
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href="#projects"
-              className="group inline-flex items-center gap-2 rounded-xl bg-white text-black px-5 py-3 text-sm font-semibold shadow-lg shadow-cyan-500/10 ring-1 ring-white/10 transition hover:translate-y-[-2px]"
-            >
-              Explore Projects
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-            <a
-              href="#skills"
-              className="inline-flex items-center gap-2 rounded-xl bg-white/5 px-5 py-3 text-sm font-semibold ring-1 ring-white/10 backdrop-blur transition hover:bg-white/10"
-            >
-              My Toolkit
-            </a>
-          </div>
+          <a href="#projects" className="px-5 py-3 rounded-lg bg-white text-black font-medium hover:bg-white/90 transition">View Projects</a>
+          <a href="#skills" className="px-5 py-3 rounded-lg bg-white/10 border border-white/10 hover:bg-white/15 transition">My Skills</a>
         </motion.div>
       </div>
     </section>
