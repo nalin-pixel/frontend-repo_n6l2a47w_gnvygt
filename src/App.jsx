@@ -9,10 +9,12 @@ import Contact from './components/Contact';
 import SourceDump from './components/SourceDump';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
+import ScrollProgress from './components/ScrollProgress';
 
 export default function App() {
   return (
     <div className="min-h-screen bg-black text-white">
+      <ScrollProgress />
       <Navbar />
       <ErrorBoundary>
         <main>
