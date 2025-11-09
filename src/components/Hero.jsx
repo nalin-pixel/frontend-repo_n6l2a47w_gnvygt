@@ -28,12 +28,14 @@ function SafeSpline({ url }) {
 }
 
 export default function Hero() {
-  const sceneUrl = 'https://prod.spline.design/Qe6dlWJktclXcUBS/scene.splinecode';
+  // System-provided tech portfolio Spline asset
+  const sceneUrl = 'https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode';
 
   return (
     <section id="home" className="relative h-[85vh] sm:h-[90vh] bg-black text-white overflow-hidden">
       <SafeSpline url={sceneUrl} />
 
+      {/* Tint overlay that doesn't block pointer events */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black pointer-events-none" />
 
       <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start justify-center">
