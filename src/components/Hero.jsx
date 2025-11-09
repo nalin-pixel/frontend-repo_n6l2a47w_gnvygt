@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Spline from '@splinetool/react-spline';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import ParallaxRibbons from './ParallaxRibbons';
 import MagneticButton from './MagneticButton';
 
@@ -31,8 +31,12 @@ function SafeSpline({ url }) {
 }
 
 export default function Hero() {
-  // System-provided Spline asset (dark, futuristic animation)
-  const sceneUrl = 'https://prod.spline.design/EF7JOSsHLk16Tlw9/scene.splinecode';
+  // Updated System-provided Spline asset (dark background with blue and red particles)
+  const sceneUrl = 'https://prod.spline.design/rvFZ5oikmZSIbmGQ/scene.splinecode';
+
+  const { scrollYProgress } = useScroll({ offset: ['start start', 'end start'] });
+  const headerY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const headerOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
 
   return (
     <section id="home" className="relative h-[85vh] sm:h-[90vh] bg-black text-white overflow-hidden">
@@ -41,10 +45,8 @@ export default function Hero() {
       {/* Parallax ambient ribbons */}
       <ParallaxRibbons />
 
-      {/* Tint overlay that doesn't block pointer events */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black pointer-events-none" />
-
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start justify-center">
+      {/* Floating header and copy parallax */}
+      <motion.div style={{ y: headerY, opacity: headerOpacity }} className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start justify-center">
         <motion.span
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -78,7 +80,10 @@ export default function Hero() {
           <MagneticButton href="#projects">View Projects</MagneticButton>
           <MagneticButton href="#contact" className="bg-transparent text-white border hover:bg-white/10">Contact</MagneticButton>
         </motion.div>
-      </div>
+      </motion.div>
+
+      {/* Tint overlay that doesn't block pointer events */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black pointer-events-none" />
     </section>
   );
 }

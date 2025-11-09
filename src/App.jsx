@@ -10,12 +10,15 @@ import SourceDump from './components/SourceDump';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 import ScrollProgress from './components/ScrollProgress';
+import Particles from './components/Particles';
 
 export default function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       <ScrollProgress />
       <Navbar />
+      {/* Ambient floating particles across the entire experience (non-interactive overlay) */}
+      <Particles />
       <ErrorBoundary>
         <main>
           <Hero />

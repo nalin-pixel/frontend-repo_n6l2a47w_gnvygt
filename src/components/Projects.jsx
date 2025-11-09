@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { Section, SectionHeader } from './SectionReveal';
 
 const projects = [
   {
@@ -29,27 +31,34 @@ function Tag({ children }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-black text-white py-20">
+    <Section id="projects">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Projects</h2>
-        <p className="text-white/70 mt-2 max-w-2xl">Selected analyses and systems that combine robust modeling with clean presentation.</p>
+        <SectionHeader title="Projects" subtitle="Selected analyses and systems that combine robust modeling with clean presentation." />
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p) => (
-            <a key={p.title} href={p.link} className="group rounded-xl overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition">
+        <div className="mt-2 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((p, idx) => (
+            <motion.a
+              key={p.title}
+              href={p.link}
+              className="group rounded-xl overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: idx * 0.12 }}
+            >
               <div className="p-5">
-                <h3 className="text-lg font-semibold group-hover:text-white">{p.title}</h3>
-                <p className="mt-2 text-sm text-white/70">{p.desc}</p>
+                <motion.h3 className="text-lg font-semibold group-hover:text-white" layout>{p.title}</motion.h3>
+                <motion.p className="mt-2 text-sm text-white/70" layout>{p.desc}</motion.p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {p.tags.map((t) => (
                     <Tag key={t}>{t}</Tag>
                   ))}
                 </div>
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
